@@ -1,0 +1,31 @@
+[package]
+name = "druidcv2"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+chrono = "0.4"
+chrono-tz = "0.4"
+druid = { git = "https://github.com/linebender/druid.git" }
+image = "0.23.14"
+instant = "0.1.12"
+
+# cargo-apk compiles your code to an .so file,
+# which is then loaded by the Android runtime
+[lib]
+path = "src/main.rs"
+crate-type = ["cdylib"]
+ 
+# Android-specic configuration follows.
+[package.metadata.android]
+# Name of your APK as shown in the app drawer and in the app switcher
+apk_label = "Hip Startup"
+ 
+# The target Android API level.
+target_sdk_version = 29
+min_sdk_version = 26
+ 
+# See: https://developer.android.com/guide/topics/manifest/activity-element#screen
+orientation = "portrait"
